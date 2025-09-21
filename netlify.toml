@@ -12,6 +12,17 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
 
+# Netlify Functions configuration for the Python backend
+[functions]
+  directory = "backend"
+  python_version = "3.9" # Or the desired Python version
+
+# Redirects for API calls to the Netlify Function
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/main/:splat"
+  status = 200
+
 # The headers below are good security and caching practices.
 [[headers]]
   for = "/*"
