@@ -1,42 +1,26 @@
+# Netlify configuration for a Next.js app in a subdirectory
+
 [build]
-<<<<<<< Updated upstream
-  publish = "Frontend/.next"
-  command = "cd Frontend && npm run build"
-=======
   # Tell Netlify to change to the "Frontend" directory before building
   base    = "Frontend"
+  # The command and publish dir are typically handled by the Next.js plugin,
+  # but we can be explicit.
   command = "npm run build"
-  publish = "build"
->>>>>>> Stashed changes
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
+# The headers below are good security and caching practices.
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
 
 [[headers]]
   for = "/_next/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
