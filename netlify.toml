@@ -1,6 +1,13 @@
 [build]
+<<<<<<< Updated upstream
   publish = "Frontend/.next"
   command = "cd Frontend && npm run build"
+=======
+  # Tell Netlify to change to the "Frontend" directory before building
+  base    = "Frontend"
+  command = "npm run build"
+  publish = "build"
+>>>>>>> Stashed changes
 
 [build.environment]
   NODE_VERSION = "18"
